@@ -1,13 +1,12 @@
-package isep.dbe.p6.Commande;
+package com.polytech.commandes;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CommandeApplicationTests {
+class CommandesApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
-
+    @Test
+    void contextLoads() {
+    }
 }
