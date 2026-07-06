@@ -14,7 +14,7 @@ public class OpenApiConfig {
         return new OpenAPI()
                 .info(new Info()
                         .title("API Gestion de Commandes")
-                        .description("API REST pour la gestion des produits, clients et commandes TP Spring Boot")
+                        .description("API REST pour la gestion des produits, clients et commandes ")
                         .version("v1.0")
                         .contact(new Contact()
                                 .name("Equipe TP Spring Boot")));
