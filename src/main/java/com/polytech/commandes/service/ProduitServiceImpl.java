@@ -31,10 +31,11 @@ public class ProduitServiceImpl implements ProduitService {
                     "Un produit avec le nom '" + requestDTO.getNom() + "' existe déjà");
         }
 
+        Integer stock = requestDTO.getStock();
         Produit produit = Produit.builder()
                 .nom(requestDTO.getNom())
                 .prix(requestDTO.getPrix())
-                .stock(requestDTO.getStock() != null ? requestDTO.getStock() : 0)
+                .stock(stock != null ? stock : 0)
                 .build();
 
         Produit sauvegarde = produitRepository.save(produit);
