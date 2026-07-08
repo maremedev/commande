@@ -1,9 +1,10 @@
 spring:
   application:
     name: Commande
-
   profiles:
     active: ${SPRING_PROFILES_ACTIVE:dev}
-
 server:
   port: ${SERVER_PORT:8080}
+jwt:
+  secret: ${JWT_SECRET:404E635266546A576E5A7234753778214125442A472D4B6150645367566B59}
+  expiration: ${JWT_EXPIRATION:86400000}

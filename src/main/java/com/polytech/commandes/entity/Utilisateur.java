@@ -1,16 +1,9 @@
 package com.polytech.commandes.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
-
-import java.time.LocalDateTime;
+import lombok.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "utilisateurs")
@@ -20,20 +13,28 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class Utilisateur {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Le nom d'utilisateur ne peut pas être vide")
-    @Column(nullable = false, unique = true, length = 100)
-    private String nom;
+    @Column(nullable = false, unique = true)
+    private String username;
 
-    @Email(message = "L'email doit être valide")
-    @Column(nullable = false, unique = true, length = 255)
+    @Column(nullable = false)
     private String email;
 
-    @CreationTimestamp
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime dateCreation;
+    @Column(nullable = false)
+    private String password;
+
+    @Builder.Default
+    private Boolean enabled = true;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "utilisateur_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    @Builder.Default
+    private Set<Role> roles = new HashSet<>();
 }
