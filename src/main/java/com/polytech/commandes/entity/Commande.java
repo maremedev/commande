@@ -10,7 +10,7 @@ import java.util.List;
 @Table(name = "commandes")
 @Getter
 @Setter
-public class Commande {
+public class Commande extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
